@@ -1,0 +1,430 @@
+body {
+    margin: 0; /* 移除默认的外边距 */
+    overflow: hidden; /* 防止滚动条出现，确保全景图像覆盖整个视口 */
+    box-sizing: border-box; /* 确保元素的总宽度和高度包括内边距和边框 */
+    font-family: 'Montserrat', sans-serif; /* 设置默认字体为 Montserrat */
+}
+
+.tour {
+    /* background: #056286; 设置背景颜色 */
+    background-image: url("images/进入封面.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* 设置高度为视口的100% */
+    margin: 0; /* 移除外边距 */
+}
+
+.logo {
+    position: absolute ; /* 绝对定位，相对于其正常位置进行定位 */
+    top: 35px; /* 上边距为10像素 */
+    right: -100px; /* 左边距为10像素 */
+    z-index: 10; /* 设置层级为10，确保在背景图片之上 */
+    transform: scale(0.7); /* 初始状态就放大到120% */
+    /* background: transparent; 确保背景是透明的 */
+}
+
+.author{
+    position: absolute; /* 绝对定位，相对于其正常位置进行定位 */
+    bottom: 20px;
+    right: 50px; 
+    color: rgb(255, 255, 255); /* 设置字体颜色为白色 */
+    font-size: 30px; /* 设置字体大小为14像素 */
+}
+
+h1 {
+    margin: 0; /* 移除标题的外边距 */
+    padding-top: 0; /* 上内边距为视口高度的10% */
+    color: rgb(255, 255, 255); /* 设置标题文本颜色为白色 */
+    font-size: 55px;
+}
+
+.tour__head {
+    padding-top: 11vh; /* 上内边距为视口高度的10% */
+    text-align: center; /* 文本居中对齐 */
+    margin-bottom: 50px; /* 下外边距为50像素 */
+}
+
+/* .tour_cover {
+    position: absolute; /* 绝对定位，相对于其正常位置进行定位 */
+    /* z-index: -10; 设置层级为负数，确保在背景图片之上 */
+    /* object-fit: contain;  */ 
+
+
+
+
+.tour__map {
+    position: absolute; /* 绝对定位，相对于其正常位置进行定位 */
+    top: 0; /* 顶部对齐 */
+    right: 0; /* 右侧对齐 */
+    width: 9.01%; /* 设置宽度为100% */
+    height: 26.4%; /* 设置高度为100% */
+    overflow: hidden; /* 隐藏溢出的内容 */
+
+    border: 5px solid #22caae; /* 设置边框样式 */
+    border-radius: 10px; /* 设置边框圆角 */
+}
+
+#mapImage {
+    width: 100%; /* 或使用 max-width */
+    height: 100%; /* 或使用 max-height */
+    object-fit: contain; /* 保持图片比例，图片完整显示 */
+}
+
+.image-container {
+    height: 58rem; /* 设置固定高度 */
+    position: relative; /* 相对定位，用于相对于其正常位置进行定位 */
+    /* width: 100%; 设置宽度为父元素宽度的100% */
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* 平滑过渡效果 */
+    margin: 0 auto; /* 上下外边距为0，左右自动（居中） */
+    margin-left: 10%; /* 左外边距为父元素宽度的12% */
+    margin-right: 10%; /* 右外边距为父元素宽度的12% */
+    overflow: hidden; /* 隐藏溢出的内容 */
+    
+    border: 2px solid #ebb47a; /* 设置边框样式 */
+    border-radius: 10px; /* 设置边框圆角 */
+}
+
+canvas {
+    width: 100%; /* 设置 canvas 宽度为父元素的100% */
+    /* 注意：height 属性未在这里设置，canvas 的高度通常会根据其宽度和宽高比自动调整 */
+}
+
+/* 添加模态对话框样式 */
+
+
+/* 放大器 */
+/* 模态对话框整体样式 */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 使用固定定位 */
+    z-index: 1; /* 设置层级以确保在顶层显示 */
+    /* 居中对齐 */
+    left: 10%;
+    right: 10%;
+    top: 10%;
+    bottom: 10%;
+    width: 80%; /* 宽度100% */
+    height: 80%; /* 高度100% */
+    overflow: auto; /* 允许滚动 */
+    background-color: rgb(0,0,0); /* 设置背景颜色为黑色 */
+    background-color: rgba(0,0,0,0.9); /* 使用黑色半透明作为背景 */
+}
+
+/* 模态对话框内容样式 */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%; /* 设置宽度为80%，或根据需求调整 */
+    max-width: 785px; /*设置最大宽度为800像素*/
+    height: 100%; /* 设置高度为100% */ 
+    max-height: 100%; /* 设置最大高度为100%*/
+    overflow: auto; /* 允许滚动 */
+    
+}
+
+/* 关闭按钮样式 */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff; /* 白色字体 */
+    font-size: 40px; /* 设置字体大小为40像素 */
+    font-weight: bold; /* 设置字体加粗 */
+    cursor: pointer; /* 鼠标指针样式为手型 */
+}
+
+
+/* 按钮样式 */
+.map-button {
+    cursor: pointer;
+    position: absolute;
+    /* 设置合适的内边距、边框和背景色 */
+    padding: 3px;
+    border: 1px solid #fff; /* 白色边框 */
+    background-color: rgba(23, 150, 212, 0.7); /* 半透明背景 */
+    /* 按钮形状为圆形 */
+    border-radius: 50%;
+
+    
+    /* color: #fff; 白色文字 */
+    /* font-size: 12px; */
+    /* 初始时隐藏，通过 JavaScript 调整 */
+    display: none;
+    /* 确保按钮在图片之上 */
+    z-index: 0;
+}
+.map-button:hover {
+    background-color: rgba(23, 150, 212, 1);
+}
+
+/* 可能需要根据小地图图片的实际尺寸调整按钮的 `top` 和 `left` 值 */
+#view0 {
+    bottom: 25.5%; 
+    left: 39.5%; 
+}
+
+#view1 {
+    bottom:34.5%; 
+    left: 36.5%; 
+} 
+
+#view2 {
+    bottom: 44%; 
+    left: 36.5%; 
+}
+
+#view3 {
+    bottom: 48%; 
+    left: 34.5%; 
+}
+
+#view4 {
+    bottom: 48.5%; 
+    left: 27%; 
+}
+
+#view5 {
+    bottom: 49.5%; 
+    left: 24%; 
+}
+
+#view6 {
+    bottom: 48%; 
+    left: 21%; 
+} 
+
+#view7 {
+    bottom: 53%; 
+    left: 21%; 
+}
+
+#view8 {
+    bottom: 52%; 
+    left: 27%; 
+}
+
+#view9 {
+    bottom:48%; 
+    left: 42%; 
+} 
+
+#view10 {
+    bottom: 57%; 
+    left: 39.4%; 
+} 
+
+#view11 {
+    bottom: 68%; 
+    left: 39.4%; 
+} 
+
+#view12 {
+    bottom: 78.7%; 
+    left: 58%; 
+} 
+
+#view13 {
+    bottom: 78.7%; 
+    left: 63.4%; 
+} 
+
+#view14 {
+    bottom: 81.37%; 
+    left: 55%; 
+} 
+
+#view15 {
+    bottom: 81.35%; 
+    left: 60%; 
+} 
+
+#view16 {
+    bottom: 84.5%; 
+    left: 60%; 
+} 
+
+#view17 {
+    bottom: 81.5%; 
+    left: 49%; 
+} 
+
+#view18 {
+    bottom: 75.8%; 
+    left: 49%; 
+} 
+
+#view19 {
+    bottom: 76%; 
+    left: 43.5%; 
+} 
+
+#view20 {
+    bottom: 75%; 
+    left: 26%; 
+} 
+
+#view21 {
+    bottom: 83%; 
+    left: 19%; 
+} 
+
+#view22 {
+    bottom:90%; 
+    left: 20%; 
+} 
+
+#view23 {
+    bottom: 90%; 
+    left: 55%; 
+} 
+
+#view24 {
+    bottom:90% ; 
+    left: 63%; 
+} 
+
+#view25 {
+    bottom: 84.5%; 
+    left: 74%; 
+} 
+
+#view26 {
+    bottom: 79%; 
+    left: 74%; 
+} 
+
+#view27 {
+    bottom: 73%; 
+    left: 74%; 
+} 
+
+#view28 {
+    bottom: 68%; 
+    left: 74%; 
+} 
+
+#view29 {
+    bottom: 68%; 
+    left: 83%; 
+} 
+
+#view30 {
+    bottom: 52%; 
+    left: 83%; 
+} 
+
+#view31 {
+    bottom:50%; 
+    left: 75%; 
+} 
+
+#view32 {
+    bottom: 47%; 
+    left: 74%; 
+} 
+
+#view33 {
+    bottom: 40%; 
+    left: 75%; 
+} 
+
+#view34 {
+    bottom: 35%; 
+    left: 75%; 
+} 
+
+#view35 {
+    bottom: 35%; 
+    left: 85%; 
+} 
+
+#view36 {
+    bottom: 30%; 
+    left: 85%; 
+} 
+
+/* #view37 {
+    bottom: 0; 
+    left: 95%; 
+}  */
+
+#view38 {
+    bottom: 24%; 
+    left: 75%; 
+} 
+
+#view39 {   
+    bottom: 15%; 
+    left: 85%; 
+} 
+
+#view40 {
+    bottom: 10%; 
+    left: 85%; 
+} 
+
+#view41 {
+    bottom: 10%; 
+    left: 63%; 
+} 
+
+#view42 {
+    bottom: 7%; 
+    left: 63%; 
+} 
+
+#view43 {    
+    bottom: 8%;      
+
+    left: 51%; 
+} 
+
+#view44 {
+    bottom: 12%; 
+    left: 51%; 
+} 
+
+#view45 {
+    bottom: 18%; 
+    left: 51%; 
+} 
+
+#view46 {
+    bottom: 24%; 
+    left: 51%; 
+} 
+
+#view47 {
+    bottom: 9%; 
+    left: 39%; 
+} 
+
+#view48 {
+    bottom: 10%; 
+    left: 23%; 
+} 
+
+#view49 {
+    bottom: 17%; 
+    left: 18%; 
+} 
+
+#view50 {
+    bottom: 25.5%; 
+    left: 18%; 
+} 
+
+#view51 {
+    bottom: 33%; 
+    left: 51.2%; 
+} 
+
+#view52 {
+    bottom: 33%; 
+    left: 57%; 
+} 
+
+
+
+
